@@ -1,5 +1,5 @@
 import pyxel
-from paddle import Paddle
+from objects import Paddle, Ball
 
 
 class App:
@@ -8,10 +8,12 @@ class App:
     @property
     def objects(self):
         yield self.paddle
+        yield self.ball
 
     def __init__(self):
         pyxel.init(*App.screen_size)
         self.paddle = Paddle(App.screen_size)
+        self.ball = Ball(App.screen_size)
         pyxel.run(self.update, self.draw)
 
     def update(self):
